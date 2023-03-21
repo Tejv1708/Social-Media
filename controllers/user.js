@@ -1,4 +1,4 @@
-import User from "../models/User";
+import User from "../models/User.js";
 
 // READ
 export const getUser = async (req, res) => {
@@ -19,15 +19,7 @@ export const getUserFriends = async (req, res) => {
       user.friends.map((id) => User.findById(id))
     );
     const formattedFriends = friends.map(
-      ({
-        id,
-        firstName,
-        lastName,
-        lastName,
-        occupation,
-        location,
-        picturepath,
-      }) => {
+      ({ id, firstName, lastName, occupation, location, picturepath }) => {
         return { _id, firstName, lastName, occupation, location, picturepath };
       }
     );
@@ -60,7 +52,6 @@ export const addRemoveFriends = async (req, res) => {
       ({
         id,
         firstName,
-        lastName,
         lastName,
         occupation,
         location,
